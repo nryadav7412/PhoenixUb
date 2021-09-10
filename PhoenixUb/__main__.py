@@ -7,5 +7,5 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger("__name__")
 
 print("Starting....")
-rimuru.start()
-rimuru.run_until_disconnected()
+phoenixub.start()
+phoenixub.run_until_disconnected()
