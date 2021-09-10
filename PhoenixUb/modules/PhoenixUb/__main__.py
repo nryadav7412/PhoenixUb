@@ -1,13 +1,13 @@
 from PhoenixUb import rimuru, rafael
 import logging  
-import Rimuru.modules 
+import PhoenixUb.modules 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level = logging.INFO)
 
 logger = logging.getLogger("__name__")
 
 print("Starting....")
-rimuru.parse_mode = 'md'
-rafel.parse_mode = 'md'
-rimuru.start()
-rimuru.run_until_disconnected()
+phoenixub.parse_mode = 'md'
+phoenix.parse_mode = 'md'
+phoenixub.start()
+phoenixub.run_until_disconnected()
