@@ -39,16 +39,10 @@ async def idscrape(slime):
     if slime.reply_to_msg_id:
         await slime.get_input_chat()
         r_msg = await slime.get_reply_message()
-        if r_msg.media:
-            bot_api_file_id = pack_bot_file_id(r_msg.media)
-            await slime.edit("**Current Chat ID:**  `{}`\n**From User ID:**  `{}`\n**Bot API File ID:**  `{}`".format(str(slime.chat_id),str(r_msg.sender_id),bot_api_file_id))
-        else:
-            await slime.edit("**Chat ID:**  `{}`\n**User ID:**  `{}`".format(str(slime.chat_id),str(r_msg.sender_id)))
-    elif slime.pattern_match.group(1):
-        ids = await get_user_id(slime.pattern_match.group(1))
-        await slime.edit("**Chat ID:**  `{}`\n**User ID:**  `{}`".format(str(slime.chat_id),str(ids)))
+        await slime.edit("**User ID:**  `{}`".format(str(r_msg.sender_id)))
     else:
         await slime.edit("**Current Chat ID:**  `{}`".format(str(slime.chat_id)))
+      
 
 @phoenix.on(events.InlineQuery(pattern=r'^btn(.*)')) 
 async def btn_maker(slime):
