@@ -1,6 +1,6 @@
 from PhoenixUb import phoenixub 
 import logging  
-import Rimuru.modules 
+import PhoenixUb.modules 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level = logging.INFO)
 
