@@ -24,5 +24,5 @@ def mention(name, userid):
   return f"[{name}](tg://user?id={userid})"
 
 
-rimuru = TelegramClient(StringSession(string_one), api_id, api_hash)
-rafael = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
+phoenixub = TelegramClient(StringSession(string_one), api_id, api_hash)
+phoenix = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
