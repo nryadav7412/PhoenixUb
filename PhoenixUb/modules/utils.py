@@ -44,8 +44,8 @@ async def idscrape(slime):
             await slime.edit("**Current Chat ID:**  `{}`\n**From User ID:**  `{}`\n**Bot API File ID:**  `{}`".format(str(slime.chat_id),str(r_msg.sender_id),bot_api_file_id))
         else:
             await slime.edit("**Chat ID:**  `{}`\n**User ID:**  `{}`".format(str(slime.chat_id),str(r_msg.sender_id)))
-    elif event.pattern_match.group(1):
-        ids = await get_user_id(event.pattern_match.group(1))
+    elif slime.pattern_match.group(1):
+        ids = await get_user_id(slime.pattern_match.group(1))
         await slime.edit("**Chat ID:**  `{}`\n**User ID:**  `{}`".format(str(slime.chat_id),str(ids)))
     else:
         await slime.edit("**Current Chat ID:**  `{}`".format(str(slime.chat_id)))
