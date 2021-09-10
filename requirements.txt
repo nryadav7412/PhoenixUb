@@ -1,0 +1,12 @@
+telethon
+sqlalchemy==1.3.23
+psycopg2-binary
+pytube
+youtube_search
+youtube_dl
+hachoir
+ffmpeg 
+ffprobe
+jikanpy
+redis 
+Pillow
