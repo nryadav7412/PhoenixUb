@@ -6,8 +6,16 @@ import os
 import ffmpeg 
 from youtube_search import YoutubeSearch
 from telethon.utils import get_attributes
+import time
 
 LOGS = logging.getLogger(__name__)
+
+
+helper = '''
+
+`.song <song>`: Get the Song From Youtube
+
+'''
 
 @phoenixub.on(events.NewMessage(outgoing=True,pattern=r'^.song(.*)'))
 async def songs(slime):
@@ -20,19 +28,20 @@ async def songs(slime):
     "nocheckcertificate": True,
     "quiet": True,
   }
-  args = slime.message.text[2:]
+  args = slime.message.text[5:]
   if args.startswith("https://"):
     url = args
   else:
     result = YoutubeSearch(args,max_results=1).to_dict()
     url = "https://youtu.be/" + result[0]['id']
-  await slime.delete()
+  await slime.edit('Finding Song....')
+  time.sleep(4)
   print(url)
   with youtube_dl.YoutubeDL(opts) as ydl:
     info = ydl.extract_info(url, download=False)
     dl = ydl.prepare_filename(info)
     ydl.download([url])
-  m = await slime.respond("Downloaded, Now uploading....")
+  m = await slime.edit("Downloaded, Now uploading....")
   f = open(dl, 'rb')
   upload = await slime.client.upload_file(file=f)
   attributes, mime_type = get_attributes(str(dl))
