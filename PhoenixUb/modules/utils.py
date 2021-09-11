@@ -32,7 +32,7 @@ async def purge(slime):
     except Exception:
       pass
   if not count == 0:
-    xx=await slime.edit(f"Purged {count} messages..")
+    xx=await slime.respond(f"Purged {count} messages..")
     time.sleep(3)
     await xx.delete()
     
