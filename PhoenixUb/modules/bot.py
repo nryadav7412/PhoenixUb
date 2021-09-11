@@ -29,7 +29,7 @@ async def start(slime):
 
 @phoenixub.on(events.NewMessage(outgoing=True, pattern=".help ?(.*)"))
 async def help(slime):
-  args=e.pattern_match.group(1)
+  args=slime.pattern_match.group(1)
   if not args:
     await slime.edit(f'''Your Userbot Has Following pluginsInstalles:-
 1. bot
