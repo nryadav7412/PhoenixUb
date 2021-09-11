@@ -9,7 +9,7 @@ from telethon.utils import get_attributes
 
 LOGS = logging.getLogger(__name__)
 
-@phoenixub.on(events.NewMessage(outgoing=True,pattern=r'^!s(.*)'))
+@phoenixub.on(events.NewMessage(outgoing=True,pattern=r'^.song(.*)'))
 async def songs(slime):
   opts = {
     "outtmpl": "%(title)s.mp3",
