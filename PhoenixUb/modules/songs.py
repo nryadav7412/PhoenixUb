@@ -34,14 +34,14 @@ async def songs(slime):
   else:
     result = YoutubeSearch(args,max_results=1).to_dict()
     url = "https://youtu.be/" + result[0]['id']
-  await slime.edit('Finding Song....')
+  await slime.edit("`Finding Song....`")
   time.sleep(4)
   print(url)
   with youtube_dl.YoutubeDL(opts) as ydl:
     info = ydl.extract_info(url, download=False)
     dl = ydl.prepare_filename(info)
     ydl.download([url])
-  m = await slime.edit("Downloaded, Now uploading....")
+  m = await slime.edit("`Downloaded, Now uploading....`")
   f = open(dl, 'rb')
   upload = await slime.client.upload_file(file=f)
   attributes, mime_type = get_attributes(str(dl))
