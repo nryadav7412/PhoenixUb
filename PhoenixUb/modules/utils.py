@@ -32,9 +32,9 @@ async def purge(slime):
     except Exception:
       pass
   if not count == 0:
-    await slime.edit(f"Purged {count} messages..")
+    xx=await slime.edit(f"Purged {count} messages..")
     time.sleep(3)
-    await slime.delete()
+    await xx.delete()
     
 @phoenixub.on(events.NewMessage(outgoing=True, pattern=r'^.id'))    
 async def idscrape(slime):
