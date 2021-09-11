@@ -16,23 +16,22 @@ async def pmperm(slime):
     return
   name = mention(user.first_name, user.id)
   if not slime.media:
-    await phoenix.send_message(pm_log, f"**{user.first_name}**: {slime.message.text}")
+    await phoenix.send_message(pm_log, f"**{name}**: {slime.message.text}")
   else:
-    await phoenix.send_file(pm_log, file=slime.media, caption=f"{user.first_name}: {slime.message.text}")
+    await phoenix.send_file(pm_log, file=slime.media, caption=f"{name}: {slime.message.text}")
   if pm.is_approved(user.id):
     return 
   if user.id in now:
     count = now[user.id] 
-    if count == 5:
-      await phoenixub.send_file(slime.chat_id,file="CAADBQADUgMAAp6ZWVadu3NWvPQb8gI")
-      time.sleep(2)
-      await slime.reply("Stop now, or i will block you...")
-      now[user.id] = count + 1
+    if count <= 5:
+      await phoenixub.send_message(slime.chat_id,f"**Stop Spamming Saar** \n**Your Warns** : {count}")
     elif count == 6:
+      await phoenixub.send_message(slime.chat_id,"Spam More , This is Your Last Chance")
+    elif count== 7:
       await phoenixub(functions.contacts.BlockRequest(id=user.id))
-      await phoenixub.send_message(slime.chat_id, "Agh, You wont lose your virginity here...")
+      await phoenixub.send_message(slime.chat_id, "Agh, I Told You Not to Spam Now You are Blocked heheh.")
       time.sleep(2)
-      await phoenixub.send_message(slime.chat_id, "Wait till Abhi comes..")
+      await phoenixub.send_message(slime.chat_id, "Wait till My Master comes..")
     else:
       now[user.id] = count + 1
   else:
@@ -48,11 +47,11 @@ async def approve(slime):
   h = pm.approve(user.id)
   if h == False:
     await slime.edit("⍟Already aprovved..")
-    time.sleep(4)
+    time.sleep(2)
     await slime.delete()
     return
   await slime.edit("✧Successful!")
-  time.sleep(4)
+  time.sleep(2)
   await slime.delete()
 
 @phoenixub.on(events.NewMessage(outgoing=True, pattern=r"^.(d|disapprove)($)"))    
@@ -64,9 +63,9 @@ async def approve(slime):
   h = pm.disapprove(user.id)
   if h == False:
     await slime.edit("⍟Already disaprovved..")
-    time.sleep(4)
+    time.sleep(2)
     await slime.delete()
     return
   await slime.edit("✧Successful!")
-  time.sleep(4)
+  time.sleep(2)
   await slime.delete()
