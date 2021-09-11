@@ -39,7 +39,7 @@ async def pmperm(slime):
     now[user.id] = 1
 
 
-@phoenixub.on(events.NewMessage(outgoing=True, pattern=r"^#(a|approve)($)"))    
+@phoenixub.on(events.NewMessage(outgoing=True, pattern=r"^.(a|approve)($)"))    
 async def approve(slime):
   if not slime.is_private:
     return 
@@ -48,14 +48,14 @@ async def approve(slime):
   h = pm.approve(user.id)
   if h == False:
     await slime.edit("⍟Already aprovved..")
-    time.sleep(1)
+    time.sleep(4)
     await slime.delete()
     return
   await slime.edit("✧Successful!")
-  time.sleep(1)
+  time.sleep(4)
   await slime.delete()
 
-@phoenixub.on(events.NewMessage(outgoing=True, pattern=r"^#(d|disapprove)($)"))    
+@phoenixub.on(events.NewMessage(outgoing=True, pattern=r"^.(d|disapprove)($)"))    
 async def approve(slime):
   if not slime.is_private:
     return 
@@ -64,9 +64,9 @@ async def approve(slime):
   h = pm.disapprove(user.id)
   if h == False:
     await slime.edit("⍟Already disaprovved..")
-    time.sleep(1)
+    time.sleep(4)
     await slime.delete()
     return
   await slime.edit("✧Successful!")
-  time.sleep(1)
+  time.sleep(4)
   await slime.delete()
