@@ -2,7 +2,7 @@ from PhoenixUb import phoenixub, phoenix, mention, alive_pic, help_strings
 from telethon import events, Button
 from datetime import datetime as dt
 
-@phoenixub.on(events.NewMessage(outgoing=True, pattern=r'^#(alive)'))
+@phoenixub.on(events.NewMessage(outgoing=True, pattern=r'^.(alive)'))
 async def alive(slime):
   me = await phoenixub.get_me()
   date = dt.now()
@@ -56,7 +56,7 @@ async def helppp(slime):
 async def helpcall(slime):
   await slime.answer(help_strings, alert=True)
   
-@phoenixub.on(events.NewMessage(outgoing=True,pattern=r'^#help$'))  
+@phoenixub.on(events.NewMessage(outgoing=True,pattern=r'^.help$'))  
 async def helpp(slime):
   bot = await phoenix.get_me()
   great_sage = bot.username
