@@ -8,7 +8,7 @@ helper = '''
 `#id`: reply to anything to get the respective ids 
 '''
 
-@phoenixub.on(events.NewMessage(outgoing=True,pattern=r'^#purge(.*)'))
+@phoenixub.on(events.NewMessage(outgoing=True,pattern=r'^.purge(.*)'))
 async def purge(slime):
   msg = slime.message.text.split(" ", 3)
   reply = await slime.get_reply_message()
@@ -32,9 +32,9 @@ async def purge(slime):
     except Exception:
       pass
   if not count == 0:
-    await slime.respond(f"Purged {count} messages..")
+    await slime.edit_delete(f"Purged {count} messages..")
     
-@phoenixub.on(events.NewMessage(outgoing=True, pattern=r'^#id'))    
+@phoenixub.on(events.NewMessage(outgoing=True, pattern=r'^.id'))    
 async def idscrape(slime):
     if slime.reply_to_msg_id:
         await slime.get_input_chat()
@@ -44,7 +44,7 @@ async def idscrape(slime):
         await slime.edit("**Current Chat ID:**  `{}`".format(str(slime.chat_id)))
       
 
-@phoenix.on(events.InlineQuery(pattern=r'^btn(.*)')) 
+@phoenix.on(events.InlineQuery(pattern=r'^.btn(.*)')) 
 async def btn_maker(slime):
   try:
     the_btn = slime.text.split(' ', 1)[1]
