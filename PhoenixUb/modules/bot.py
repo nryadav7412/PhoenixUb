@@ -12,7 +12,7 @@ async def alive(slime):
   await phoenixub.send_file(slime.chat_id , alive_pic , caption=f"**「 Phoenix Userbot ..」**\n**My Master** : {kek}\n**Date** : {date}")
   await slime.delete()
   
-@phoenixub.on(events.NewMessage(outgoing=True, pattern=r'^#ping$'))
+@phoenixub.on(events.NewMessage(outgoing=True, pattern=r'^.ping$'))
 async def ping(slime):
   start = dt.now()
   await slime.edit("`۞Pinging....`")
