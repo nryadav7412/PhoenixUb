@@ -31,25 +31,26 @@ async def start(slime):
 async def help(slime):
   args=slime.pattern_match.group(1)
   if not args:
-    await slime.edit(f'''Your Userbot Has Following pluginsInstalles:-
-1. bot
-2. pm
-3. songs
-4. utils
+    await slime.edit(f'''**Your Userbot Has Following plugins Installed** :-
+1. `bot`
+2. `pm`
+3. `songs`
+4. `utils`
 
-You check commands for each plugin by `.help <plugin name>`''')
+**You check commands for each plugin by** `.help <plugin name>`''')
   elif args=='bot':
-    await slime.edit(f'''This plugin has:
-.alive : Check If our Bot Alive
-.ping  : Check Pong Time
-.help : Check Help menu''')
+    await slime.edit(f'''**This plugin has:**
+`.alive` : Check If our Bot Alive
+`.ping` : Check Pong Time
+`.help` : Check Help menu''')
   elif args=='pm':
-    await slime.edit(f'''This plugin has :
-.a / .approve : To approve
-.d / .disapprove : To Disapprove''')
+    await slime.edit(f'''**This plugin has :**
+`.a` / `.approve` : To approve
+`.d` / `.disapprove` : To Disapprove''')
   elif args=='songs':
-    await slime.edit(f'''
+    await slime.edit(f'''**This plugin has :**
 `.song <song>`: Get the Song From Youtube''')
   elif args=='utils':
-    await slime.edit(f'''`.purge`: reply to message to delete every message till the latest message 
+    await slime.edit(f'''**This plugin has :**
+`.purge`: reply to message to delete every message till the latest message 
 `.id`: reply to anything to get the respective ids ''')
