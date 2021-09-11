@@ -24,5 +24,5 @@ async def ping(slime):
 async def start(slime):
   bot = await phoenix.get_me()
   user = await phoenixub.get_me()
-  text = f'Hello Telegram User , I am [{bot.first_name}](https://t.me/{bot}.username) ,a userbot and helper for {{user.first_name}](https://t.me/{user}.username)'
+  text = f'''Hello Telegram User , I am [{bot.first_name}](https://t.me/{bot}.username) ,a userbot and helper for {{user.first_name}](https://t.me/{user}.username)'''
   await slime.reply(text)
