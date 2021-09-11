@@ -4,11 +4,11 @@ from telethon.utils import pack_bot_file_id
 import time 
 
 helper = '''
-`#purge`: reply to message to delete every message till the latest message 
-`#id`: reply to anything to get the respective ids 
+`.purge`: reply to message to delete every message till the latest message 
+`.id`: reply to anything to get the respective ids 
 '''
 
-@phoenixub.on(events.NewMessage(outgoing=True,pattern=r'^.purge(.*)'))
+@phoenixub.on(events.NewMessage(outgoing=True,pattern=r".purge(.*)"))
 async def purge(slime):
   msg = slime.message.text.split(" ", 3)
   reply = await slime.get_reply_message()
@@ -32,7 +32,9 @@ async def purge(slime):
     except Exception:
       pass
   if not count == 0:
-    await slime.edit_delete(f"Purged {count} messages..")
+    await slime.respond(f"Purged {count} messages..")
+    time.sleep(3)
+    await slime.delete()
     
 @phoenixub.on(events.NewMessage(outgoing=True, pattern=r'^.id'))    
 async def idscrape(slime):
@@ -44,7 +46,7 @@ async def idscrape(slime):
         await slime.edit("**Current Chat ID:**  `{}`".format(str(slime.chat_id)))
       
 
-@phoenix.on(events.InlineQuery(pattern=r'^.btn(.*)')) 
+@phoenix.on(events.InlineQuery(pattern=r'^button(.*)')) 
 async def btn_maker(slime):
   try:
     the_btn = slime.text.split(' ', 1)[1]
