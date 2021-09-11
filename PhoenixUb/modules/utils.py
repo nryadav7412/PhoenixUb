@@ -44,37 +44,3 @@ async def idscrape(slime):
         await slime.edit("**User ID:**  `{}`".format(str(r_msg.sender_id)))
     else:
         await slime.edit("**Current Chat ID:**  `{}`".format(str(slime.chat_id)))
-      
-
-@phoenix.on(events.InlineQuery(pattern=r'^button(.*)')) 
-async def btn_maker(slime):
-  try:
-    the_btn = slime.text.split(' ', 1)[1]
-  except IndexError:
-    await slime.answer(
-      [
-        slime.builder.article(
-          title='Build Button',
-          description='Make buttons Like, Text To send Button1:url Button2:url',
-          text= 'Make buttons Like, Text To send Button1:url Button2:url',
-          )
-        ]
-      )
-  hek = the_btn.split(',')
-  main_text = hek[0]
-  hek = hek[1].split(' ')
-  btns = []
-  for i in hek:
-    btn = i.split(':', 1)
-    btn_text = btn[0]
-    btn_url = btn[1]
-    btns.append([Button.url(text=btn_text, url=btn_url)])
-  article = [
-    slime.builder.article(
-      title=f'{main_text[:-10]}...',
-      description=f'button ready!, Click To send...',
-      text=main_text,
-      buttons=btns,
-      )
-    ]
-  await slime.answer(article)
