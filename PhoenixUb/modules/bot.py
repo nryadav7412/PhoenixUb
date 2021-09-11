@@ -26,3 +26,30 @@ async def start(slime):
   user = await phoenixub.get_me()
   text = f'''Hello Telegram User , I am **{bot.first_name}** ,a userbot and helper for **{user.first_name}**'''
   await slime.reply(text)
+
+@phoenixub.on(events.NewMessage(outgoing=True, pattern=".help ?(.*)"))
+async def help(slime):
+  args=e.pattern_match.group(1)
+  if not args:
+    await slime.edit(f'''Your Userbot Has Following pluginsInstalles:-
+1. bot
+2. pm
+3. songs
+4. utils
+
+You check commands for each plugin by `.help <plugin name>`''')
+  elif args=='bot':
+    await slime.edit(f'''This plugin has:
+.alive : Check If our Bot Alive
+.ping  : Check Pong Time
+.help : Check Help menu''')
+  elif args=='pm':
+    await slime.edit(f'''This plugin has :
+.a / .approve : To approve
+.d / .disapprove : To Disapprove''')
+  elif args=='songs':
+    await slime.edit(f'''
+`.song <song>`: Get the Song From Youtube''')
+  elif args=='utils':
+    await slime.edit(f'''`.purge`: reply to message to delete every message till the latest message 
+`.id`: reply to anything to get the respective ids ''')
