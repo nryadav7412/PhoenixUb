@@ -63,4 +63,5 @@ async def help(slime):
 `.dm` : Send Replied Message to The User
 `.sco` : Send Reply Message Again
 `.save` : Save Msg in Saved Messages''')
-    
+  else: 
+    await slime.edit(f"`This is not a plugin Phew...`")
