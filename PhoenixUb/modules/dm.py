@@ -2,7 +2,7 @@ from PhoenixUb import phoenixub, phoenix
 from telethon import events, Button, functions, types
 import asyncio
 
-@phoenixub.on(pattern="dm ?(.*)")
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".dm ?(.*)"))
 async def dm(e):
     if len(e.text) > 3:
         if not e.text[3] == " ":  # weird fix
@@ -26,4 +26,23 @@ async def dm(e):
         await phoenixub.send_message(chat_id, msg)
         await e.edit("`Message Sent!`")
     except BaseException:
-        await eod(e, f"Use Properly Saar : `.dm <reply>/.dm <username> <msg>`")
+        await e.edit(f"Use Properly Saar : `.dm <reply>/.dm <username> <msg>`")
+
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".save"))
+async def save(slime):
+    user=await phoenixub.get_me()
+    reply=await e.get_reply_message()
+    await phoenixub.send_message(user.username ,reply)
+    await slime.edit(f"`Message Saved in Your saved msgs`")
+
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".sco"))
+async def sco(slime):
+    args=slime.pattern_match.group(1)
+    if not args:
+          count=1
+    else :
+          count=int(args[0])
+    reply=await slime.get_reply_message()
+    await slime.delete()
+    for i in range (count):
+          await phoenixub.send_message(slime.chat_id,reply)
