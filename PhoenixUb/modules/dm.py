@@ -17,7 +17,7 @@ async def dm(slime):
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".save"))
 async def save(slime):
     user=await phoenixub.get_me()
-    reply=await e.get_reply_message()
+    reply=await slime.get_reply_message()
     await phoenixub.send_message(user.username ,reply)
     await slime.edit(f"`Message Saved in Your saved msgs`")
 
