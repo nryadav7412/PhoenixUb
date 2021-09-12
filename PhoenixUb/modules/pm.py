@@ -34,9 +34,9 @@ async def pmperm(slime):
       await phoenixub.send_message(slime.chat_id, "Agh, I Told You Not to Spam Now You are Blocked heheh.")
       time.sleep(2)
       await phoenixub.send_message(slime.chat_id, "Wait till My Master comes..")
-      now[user.id] = 1
+      now[user.id] = 0
   else:
-    now[user.id] = 1
+    now[user.id] = 0
 
 
 @phoenixub.on(events.NewMessage(outgoing=True, pattern=r"^.(a|approve)($)"))    
