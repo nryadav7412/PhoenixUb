@@ -11,8 +11,6 @@ async def dm(e):
     c = d.split(" ")
     try:
         chat_id = await get_user_id(c[0])
-    except Exception as ex:
-        return await eod(e, "`" + str(ex) + "`")
     msg = ""
     masg = await e.get_reply_message()
     if e.reply_to_msg_id:
