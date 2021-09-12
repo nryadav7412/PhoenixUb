@@ -25,14 +25,16 @@ async def pmperm(slime):
     count = now[user.id] 
     if count <= 5:
       await phoenixub.send_message(slime.chat_id,f"**Stop Spamming Saar** \n**Your Warns** : {count}")
+      now[user.id] = count + 1
     elif count == 6:
       await phoenixub.send_message(slime.chat_id,"Spam More , This is Your Last Chance")
+      now[user.id] = count + 1
     elif count== 7:
       await phoenixub(functions.contacts.BlockRequest(id=user.id))
       await phoenixub.send_message(slime.chat_id, "Agh, I Told You Not to Spam Now You are Blocked heheh.")
       time.sleep(2)
       await phoenixub.send_message(slime.chat_id, "Wait till My Master comes..")
-      now[user.id] = count + 1
+      now[user.id] = 1
   else:
     now[user.id] = 1
 
