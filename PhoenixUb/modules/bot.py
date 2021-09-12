@@ -60,7 +60,7 @@ async def help(slime):
     await slime.edit(f'''**This plugin has Nothing To do**''')
   elif args=='dm':
     await slime.edit(f'''**This plugin has :**
-`.dm`: Send Replied Message to The User
-`.sco`: Send Reply Message Again
+`.dm` : Send Replied Message to The User
+`.sco` : Send Reply Message Again
 `.save` : Save Msg in Saved Messages''')
     
