@@ -8,7 +8,10 @@ async def dm(slime):
     args=args.split(' ')
     if args[0]:
         reply=await slime.get_reply_message()
-        await phoenixub.send(args[0] , reply)
+        await phoenixub.send_message(args[0] , reply)
+        await slime.edit("`Message Sent!`")
+        await asyncio.sleep(3)
+        await slime.delete()
     
 
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".save"))
