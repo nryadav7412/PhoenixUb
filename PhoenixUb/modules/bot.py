@@ -36,6 +36,8 @@ async def help(slime):
 2. `pm`
 3. `songs`
 4. `utils`
+5.  `tag`
+6.  `dm`
 
 **You check commands for each plugin by** `.help <plugin name>`''')
   elif args=='bot':
@@ -54,3 +56,11 @@ async def help(slime):
     await slime.edit(f'''**This plugin has :**
 `.purge`: reply to message to delete every message till the latest message 
 `.id`: reply to anything to get the respective ids ''')
+  elif args=='tag':
+    await slime.edit(f'''**This plugin has Nothing To do**''')
+  elif args=='dm':
+    await slime.edit(f'''**This plugin has :**
+`.dm`: Send Replied Message to The User
+`.sco`: Send Reply Message Again
+`.save` : Save Msg in Saved Messages''')
+    
