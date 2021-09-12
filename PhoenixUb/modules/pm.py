@@ -14,11 +14,10 @@ async def pmperm(slime):
   user = await slime.get_chat()
   if user.bot:
     return
-  name = mention(user.first_name, user.id)
   if not slime.media:
-    await phoenix.send_message(pm_log, f"**{name}**: {slime.message.text}")
+    await slime.forward_to(pm_log)
   else:
-    await phoenix.send_file(pm_log, file=slime.media, caption=f"{name}: {slime.message.text}")
+    await slime.forward_to(pm_log)
   if pm.is_approved(user.id):
     return 
   if user.id in now:
@@ -52,7 +51,7 @@ async def approve(slime):
     time.sleep(3)
     await slime.delete()
     return
-  await slime.edit("✧Successful!")
+  await slime.edit("Approval ✧ Successful!")
   time.sleep(3)
   await slime.delete()
 
@@ -69,6 +68,6 @@ async def approve(slime):
     time.sleep(3)
     await slime.delete()
     return
-  await slime.edit("✧Successful!")
+  await slime.edit("Disapproval ✧ Successful!")
   time.sleep(3)
   await slime.delete()
