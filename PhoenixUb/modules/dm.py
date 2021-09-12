@@ -21,9 +21,9 @@ async def save(slime):
     await phoenixub.send_message(user.username ,reply)
     await slime.edit(f"`Message Saved in Your saved msgs`")
 
-@phoenixub.on(events.NewMessage(outgoing=True , pattern=".sco"))
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".sco ?(.*)"))
 async def sco(slime):
-    args=slime.text
+    args=slime.pattern_match.group(1)
     if not args:
           count=1
     else :
