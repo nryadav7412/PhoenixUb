@@ -6,6 +6,9 @@ phoenix.parse_mode = "md"
 @phoenixub.on(events.NewMessage(incoming=True, func=lambda e: (e.mentioned)))
 async def taglog(slime):
   user=slime.sender
+  if user.bot or user.verified:
+    return
+  chat=slime.chat
   kek = user.first_name
   chat = slime.chat
   msg = slime.message
