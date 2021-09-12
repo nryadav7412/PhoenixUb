@@ -23,7 +23,7 @@ async def save(slime):
 
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".sco"))
 async def sco(slime):
-    args=slime.message.text
+    args=slime.text
     if not args:
           count=1
     else :
