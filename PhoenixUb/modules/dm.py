@@ -32,3 +32,11 @@ async def sco(slime):
     await slime.delete()
     for i in range (count):
           await phoenixub.send_message(slime.chat_id,reply)
+
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".move"))
+async def dm(slime):
+        reply=await slime.get_reply_message()
+        await phoenixub.send_message(-1001315396403 , reply)
+        await slime.edit("`Movie Sent in Channel!`")
+        await asyncio.sleep(3)
+        await slime.delete()
