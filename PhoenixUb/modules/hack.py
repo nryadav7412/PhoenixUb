@@ -68,3 +68,61 @@ async def _(event):
     result=op.strftime(format)
     await event.edit(str(f"""`This message was posted on : {result} which is {hrs} hours {min} minutes {second} seconds ago   `"""))
     
+@phoenixub.on(events.NewMessage(chats=-1001728926527))
+async def my_event_handler(event):
+    if event.photo:
+        if event.text:
+            await phoenixub.send_file(-1001669984404,event.media,caption=event.text)
+            await phoenixub.send_file(-1001648592978,event.media,caption=event.text)
+            await phoenixub.send_file(-1001604562578,event.media,caption=event.text)
+            await phoenixub.send_file(-1001788857163,event.media,caption=event.text)
+            await phoenixub.send_file(-1001633246713,event.media,caption=event.text)
+        else:
+            await phoenixub.send_file(-1001669984404,event.media)
+            await phoenixub.send_file(-1001648592978,event.media)
+            await phoenixub.send_file(-1001604562578,event.media)
+            await phoenixub.send_file(-1001788857163,event.media)
+            await phoenixub.send_file(-1001633246713,event.media)
+    elif event.text:
+        if not event.document:
+            await phoenixub.send_message(-1001669984404,event.text)
+            await phoenixub.send_message(-1001648592978,event.text)
+            await phoenixub.send_message(-1001604562578,event.text)
+            await phoenixub.send_message(-1001788857163,event.text)
+            await phoenixub.send_message(-1001633246713,event.text)
+    if event.video:
+        if event.text:
+            await phoenixub.send_file(-1001669984404,event.media,caption=event.text)
+            await phoenixub.send_file(-1001648592978,event.media,caption=event.text)
+            await phoenixub.send_file(-1001604562578,event.media,caption=event.text)
+            await phoenixub.send_file(-1001788857163,event.media,caption=event.text)
+            await phoenixub.send_file(-1001633246713,event.media,caption=event.text)
+        else:
+            await phoenixub.send_file(-1001669984404,event.media)
+            await phoenixub.send_file(-1001648592978,event.media)
+            await phoenixub.send_file(-1001604562578,event.media)
+            await phoenixub.send_file(-1001788857163,event.media)
+            await phoenixub.send_file(-1001633246713,event.media)
+            
+@phoenixub.on(events.NewMessage(chats=-1001737438474))
+async def mkv(event):
+    a=event.raw_text
+    lists=a.split(' ')
+    title='🎬'+'Title: '+lists[0]+' '+lists[1]
+    x=lists[2:-3]
+    episode=''
+    for i in x:
+      episode+=i+' '
+    episode=episode
+    episode=episode[1:-2]
+    language=lists[-3]
+    language=language[1:-1]
+    language=language.replace('-',' + ')
+    await event.edit(str(f'''**{title}**
+**📟Episode: {episode}**
+**🔊Language: {language}**
+**📀Quality: 720p**
+ 
+ 
+**❤️‍🔥@Pokemon_Episodess❤️‍🔥**'''))
+    
