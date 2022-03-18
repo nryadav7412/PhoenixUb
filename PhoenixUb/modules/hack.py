@@ -25,3 +25,19 @@ async def _(event):
             )
             await event.delete()
             os.remove(input_str)
+            
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".open"))
+async def _(event):
+    if event.reply:
+        a = await event.get_reply_message()
+        if not a.message:
+            return await event.edit("Reply to a message")
+        else:
+            dl=await a.download_media()
+            nm=a.file.name
+            b = open(nm, "r")
+            data=b.read()
+            b.close()
+            await event.edit(f"`{data}`")
+            os.remove(nm)
+    
