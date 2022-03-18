@@ -18,7 +18,8 @@ async def ping(slime):
   await slime.edit("`۞Pinging....`")
   end = dt.now()
   pon = (start - end).microseconds / 1000
-  await slime.edit(f"`Pong !!` \n`PongTime` : {pon} ms")
+  await slime.edit(f'''🏓 PONG!!
+⚡️ {pon} ms''')
 
 @phoenix.on(events.NewMessage(incoming=True,pattern=r'^\/start'))
 async def start(slime):
