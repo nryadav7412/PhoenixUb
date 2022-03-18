@@ -3,6 +3,9 @@ from telethon import events, Button, functions, types
 import asyncio
 import os 
 import time
+import pytz
+from datetime import datetime
+from pytz import timezone
 
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".dc ?(.*)"))
 async def _(event):
@@ -40,4 +43,28 @@ async def _(event):
             b.close()
             await event.edit(f"`{data}`")
             os.remove(nm)
+            
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".when"))
+async def _(event):
+    reply = await event.get_reply_message()
+    if reply:
+        try:
+            result = reply.fwd_from.date
+        except Exception:
+            result = reply.date
+    else:
+        result = event.date
+    format="%d-%m-%Y %H:%M:%S %Z%z"
+    op=result.astimezone(timezone('Asia/Kolkata'))
+    go= datetime.now(timezone('Asia/Kolkata'))
+    diff=go-op
+    diff=str(diff)
+    args=diff.split(':')
+    hrs=args[0]
+    min=args[1]
+    second=args[2]
+    sec=second.split('.')
+    second=sec[0]
+    result=op.strftime(format)
+    await event.edit(str(f"""`This message was posted on : {result} which is {hrs} hours {min} minutes {second} seconds ago   `"""))
     
