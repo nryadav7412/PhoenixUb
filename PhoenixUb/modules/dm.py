@@ -45,3 +45,26 @@ async def semd(e):
      for i in msgss[::-1]:
           if i.video:
             await phoenixub.send_message(-1001598947835,i)
+            
+@phoenix.on(events.NewMessage(chats=-1001525556358))
+async def moviefilter(event):
+    if not event.sender.bot:
+        if len(event.raw_text)>15:
+            srch=event.raw_text
+            rslts=f"""==**Your Matching Result In Channel**=="""
+            count=0
+            async for msg in phoenixub.iter_messages(-1001315396403,reverse=True,search=srch):
+                if msg.video:
+                    rslts+='\n➥'+f'''__https://t.me/c/1315396403/{msg.id}__'''
+                    count+=1
+            if count>0:
+                try:
+                    rep=await event.get_reply_message()
+                    if rep:
+                        await rep.reply(rslts)
+                    else:
+                        await event.reply(rslts)
+                except Exception:
+                    pass
+            else:
+                pass
