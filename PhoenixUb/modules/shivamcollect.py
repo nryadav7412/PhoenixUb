@@ -12,7 +12,7 @@ async def hi(event):
             b=b.replace('Latest_Movies_And_Series','Newest_Movies_And_Series')
         else:
             b=b
-        await ultroid.send_file(-1001675262116,a,caption=str(b))
+        await phoenixub.send_file(-1001675262116,a,caption=str(b))
     elif event.video:
         a=event.media
         b=event.text
@@ -20,6 +20,6 @@ async def hi(event):
             b=b.replace('Latest_Movies_And_Series','Newest_Movies_And_Series')
         else:
             b=b
-        await ultroid.send_file(-1001675262116,a,caption=str(b))
+        await phoenixub.send_file(-1001675262116,a,caption=str(b))
     elif event.sticker:
-        await ultroid.send_file(-1001675262116,event.message)
+        await phoenixub.send_file(-1001675262116,event.message)
