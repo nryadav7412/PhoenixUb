@@ -8,7 +8,7 @@ helper = '''
 `.id`: reply to anything to get the respective ids 
 '''
 
-@phoenixub.on(events.NewMessage(outgoing=True,pattern=r".purge(.*)"))
+@phoenixub.on(events.NewMessage(outgoing=True,pattern=r".prg(.*)"))
 async def purge(slime):
   msg = slime.message.text.split(" ", 3)
   reply = await slime.get_reply_message()
