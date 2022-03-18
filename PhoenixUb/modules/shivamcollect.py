@@ -3,26 +3,42 @@ from telethon import events, Button, functions, types
 import asyncio
 
 chat=-1001315396403
+statuss=[]
+
 @phoenixub.on(events.NewMessage(chats=chat))
 async def hi(event):
-    if event.photo:
-        a=event.media
-        b=event.text
-        if 'Latest_Movies_And_Series' in b:
-            b=b.replace('Latest_Movies_And_Series','Newest_Movies_And_Series')
-        else:
-            b=b
-        await phoenixub.send_file(-1001675262116,a,caption=str(b))
-    elif event.video:
-        a=event.media
-        b=event.text
-        if 'Latest_Movies_And_Series' in b:
-            b=b.replace('Latest_Movies_And_Series','Newest_Movies_And_Series')
-        else:
-            b=b
-        await phoenixub.send_file(-1001675262116,a,caption=str(b))
-    elif event.sticker:
-        await phoenixub.send_file(-1001675262116,event.message)
+    if len(statuss)==0:
+        if event.photo:
+            a=event.media
+            b=event.text
+            if 'Latest_Movies_And_Series' in b:
+                b=b.replace('Latest_Movies_And_Series','Newest_Movies_And_Series')
+            else:
+                b=b
+            await phoenixub.send_file(-1001675262116,a,caption=str(b))
+        elif event.video:
+            a=event.media
+            b=event.text
+            if 'Latest_Movies_And_Series' in b:
+                b=b.replace('Latest_Movies_And_Series','Newest_Movies_And_Series')
+            else:
+                b=b
+            await phoenixub.send_file(-1001675262116,a,caption=str(b))
+        elif event.sticker:
+            await phoenixub.send_file(-1001675262116,event.message)
+    else:
+        pass
+@phoenixub.on(events.NewMessage(outgoing=True,pattern='.rems'))
+async def rems(event):
+    statuss.append('Removed')
+    print('Removed Connection With Shivam!')
+    await event.edit('Removed Connection With Shivam!')
+
+@phoenixub.on(events.NewMessage(outgoing=True,pattern='.adds'))
+async def rems(event):
+    statuss.pop()
+    print('`Added Connection With Shivam!`')
+    await event.edit('`Added Connection With Shivam!`')
      
 @phoenixub.on(events.NewMessage(outgoing=True,pattern='.name'))
 async def name(event):
