@@ -10,3 +10,4 @@ ffprobe
 jikanpy
 redis 
 Pillow
+pytz
