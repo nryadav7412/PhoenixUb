@@ -33,7 +33,7 @@ async def sco(slime):
     for i in range (count):
           await phoenixub.send_message(slime.chat_id,reply)
 
-@phoenixub_on(events.NewMessage(outgoing=True , pattern=".lmas"))
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".lmas"))
 async def semd(e):
      reply=await e.get_reply_message()
      await e.delete()
@@ -46,7 +46,7 @@ async def semd(e):
           if i.video:
             await phoenixub.send_message(-1001598947835,i)
             
-@phoenix.on(events.NewMessage(chats=-1001525556358))
+@phoenix.on(events.NewMessage(chats=[-1001525556358,-1001287542359]))
 async def moviefilter(event):
     if not event.sender.bot:
         if len(event.raw_text)>15:
@@ -68,3 +68,15 @@ async def moviefilter(event):
                     pass
             else:
                 pass
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".movein"))
+async def semd(e):
+     reply=await e.get_reply_message()
+     await e.delete()
+     reply_id=reply.id
+     from_id=reply.id - 1
+     async for msg in phoenixub.iter_messages(e.chat_id, reverse=True , offset_id=from_id):
+          xx=msg.text
+          xx=xx.replace('Latest_Movies_And_Series','Newest_Movies_And_Series')
+          await phoenixub.send_message(-1001315396403 , msg)
+          await phoenixub.send_file(-1001675262116,msg.media,caption=xx)
+          await asyncio.sleep(2)
