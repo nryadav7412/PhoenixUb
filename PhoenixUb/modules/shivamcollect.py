@@ -30,16 +30,22 @@ async def hi(event):
         pass
 @phoenixub.on(events.NewMessage(outgoing=True,pattern='.rems'))
 async def rems(event):
-    statuss.append('Removed')
-    print('Removed Connection With Shivam!')
-    await event.edit('`Removed Connection With Shivam!`')
-
+    if len(statuss)==0:
+        statuss.append('Removed')
+        print('Removed Connection With Shivam!')
+        await event.edit('`Removed Connection With Shivam!`')
+    else:
+        await event.edit('`Already Removed Connection!`')
+        
 @phoenixub.on(events.NewMessage(outgoing=True,pattern='.adds'))
 async def rems(event):
-    statuss.pop()
-    print('Added Connection With Shivam!')
-    await event.edit('`Added Connection With Shivam!`')
-     
+    if len(statuss)==1:
+        statuss.pop()
+        print('Added Connection With Shivam!')
+        await event.edit('`Added Connection With Shivam!`')
+    else:
+        await event.edit('`Already Added Connection!`')
+      
 @phoenixub.on(events.NewMessage(outgoing=True,pattern='.name'))
 async def name(event):
     if not event.reply:
