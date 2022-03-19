@@ -208,7 +208,7 @@ async def unban(event):
     except Exception as e:
         await event.edit(f"{e}")
         
-@phoenixub.on(events.NewMessage(outgoing=True , pattern=".pin"))
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".pim"))
 async def unban(event):
     xx = await event.edit("`Pinning...`")
     if event.reply:
@@ -222,7 +222,7 @@ async def unban(event):
     except Exception as e:
         pass
     
-@phoenixub.on(events.NewMessage(outgoing=True , pattern=".unpin"))
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".unpim"))
 async def unban(event):
     xx = await event.edit("`UnPinning...`")
     if event.reply:
