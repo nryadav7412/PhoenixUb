@@ -272,6 +272,17 @@ async def unmute(event):
         await event.edit(f"`Successfully UnMuted {sendr}  Here`")
     except Exception as m:
         await event.edit(f"{m}")        
+
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".promote ?(.*)"))
+async def promote(event):
+    xx = await event.edit("`Inviting...`")
+    to_add_user = event.pattern_match.group(1).strip()
+    username = await phoenixub.get_entity(to_add_user)
+    try:
+           await phoenixub(AddChatUserRequest(chat_id=event.chat_id,user_id=username.id,fwd_limit=1000000))
+           await xx.edit(f"Successfully invited `{username.first_name}` to `{event.chat_id}`")
+    except Exception as e:
+           await xx.edit(str(e))
     
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".promote ?(.*)"))
 async def promote(event):
