@@ -280,7 +280,7 @@ async def unmute(event):
 async def invite(event):
     xx = await event.edit("`Inviting...`")
     to_add_users = event.pattern_match.group(1).strip()
-    username = await phoenixub.get_entity(to_add_user)
+    username = await phoenixub.get_entity(to_add_users)
     if not event.is_channel and event.is_group:
         for user_id in to_add_users.split(" "):
             try:
