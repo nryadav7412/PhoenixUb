@@ -136,21 +136,157 @@ async def mkv(event):
  
 **❤️‍🔥@Pokemon_Episodess❤️‍🔥**'''))
     
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".demote ?(.*)"))
+async def demote(event):
+    xx = await event.edit("`Demoting...`")
+    if event.reply:
+        a=await event.get_reply_message()
+        sendr=a.sender_id
+    else:
+        args=event.pattern_match.group(1)
+        sendr=args.strip()
+    try:
+        await phoenixub.edit_admin(
+            event.chat_id,
+            int(sendr),
+            invite_users=None,
+            ban_users=None,
+            delete_messages=None,
+            pin_messages=None,
+            manage_call=None,
+            title=rank,
+        )
+        await event.edit(f"Succesfully Demoted `{sendr}` here...")
+    except Exception as ex:
+        return await xx.edit(f"`{ex}`")
+
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".ban ?(.*)"))
+async def ban(event):
+    xx = await event.edit("`Banning...`")
+    if event.reply:
+        a=await event.get_reply_message()
+        sendr=a.sender_id
+    else:
+        args=event.pattern_match.group(1)
+        sendr=args.strip()
+    try:
+        await phoenixub.edit_permissions(event.chat_id, int(sendr), view_messages=False)
+        await event.edit(f"Succesfully Banned This Person Here...")
+    except Exception as e:
+        await event.edit(f"{e}")
+
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".unban ?(.*)"))
+async def unban(event):
+    xx = await event.edit("`UnBanning...`")
+    if event.reply:
+        a=await event.get_reply_message()
+        sendr=a.sender_id
+    else:
+        args=event.pattern_match.group(1)
+        sendr=args.strip()
+    try:
+        await phoenixub.edit_permissions(event.chat_id, int(sendr), view_messages=True)
+        await event.edit(f"Succesfully UnBanned This Person Here...")
+    except Exception as e:
+        await event.edit(f"{e}")
+        
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".kick ?(.*)"))
+async def unban(event):
+    xx = await event.edit("`Kicking...`")
+    if event.reply:
+        a=await event.get_reply_message()
+        sendr=a.sender_id
+    else:
+        args=event.pattern_match.group(1)
+        sendr=args.strip()
+    try:
+        await phoenixub.kick_participant(event.chat_id, int(sendr))
+        await event.edit(f"Succesfully Kicked This Person Here...")
+    except Exception as e:
+        await event.edit(f"{e}")
+        
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".pin"))
+async def unban(event):
+    xx = await event.edit("`Pinning...`")
+    if event.reply:
+        a=await event.get_reply_message()
+        sendr=a.id
+    else:
+        await event.edit("`Reply...`")
+    try:
+        await phoenixub.pin_message(event.chat_id, sendr, notify=False)
+        await event.edit(f"Pinned...")
+    except Exception as e:
+        pass
+    
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".unpin"))
+async def unban(event):
+    xx = await event.edit("`UnPinning...`")
+    if event.reply:
+        a=await event.get_reply_message()
+        sendr=a.id
+    else:
+        await event.edit("`Reply...`")
+    try:
+        await phoenixub.unpin_message(event.chat_id, sendr)
+        await event.edit(f"UnPinned...")
+    except Exception as e:
+        pass
+    
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".mute ?(.*)"))
+async def mute(event):
+    xx=await event.edit("`Muting...`")
+    if event.reply:
+        a=await event.get_reply_message()
+        sendr=a.sender_id
+    else:
+        args=event.pattern_match.group(1)
+        sendr=args.strip()
+    try:
+        await phoenixub.edit_permissions(
+            event.chat_id,
+            int(sendr),
+            until_date=None,
+            send_messages=False,
+        )
+        await event.edit(f"`Successfully Muted {sendr}  Here`")
+    except Exception as m:
+        await event.edit(f"{m}")
+
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".unmute ?(.*)"))
+async def unmute(event):
+    xx=await event.edit("`UnMuting...`")
+    if event.reply:
+        a=await event.get_reply_message()
+        sendr=a.sender_id
+    else:
+        args=event.pattern_match.group(1)
+        sendr=args.strip()
+    try:
+        await phoenixub.edit_permissions(
+            event.chat_id,
+            int(sendr),
+            until_date=None,
+            send_messages=True,
+        )
+        await event.edit(f"`Successfully UnMuted {sendr}  Here`")
+    except Exception as m:
+        await event.edit(f"{m}")        
+    
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".promote ?(.*)"))
 async def promote(event):
     xx = await event.edit("`Promoting...`")
-    cht=await phoenixub.get_chat()
     rank = "Admin"
     if event.reply:
         a=await event.get_reply_message()
         sendr=a.sender_id
     else:
         args=event.pattern_match.group(1)
-        
+        sendr=args.strip()
     try:
         await phoenixub.edit_admin(
-            ult.chat_id,
-            user.id,
+            event.chat_id,
+            int(sendr),
             invite_users=True,
             ban_users=True,
             delete_messages=True,
@@ -158,8 +294,6 @@ async def promote(event):
             manage_call=True,
             title=rank,
         )
-        await eod(
-            xx, get_string("pro_2").format(inline_mention(user), ult.chat.title, rank)
-        )
+        await event.edit(f"Now `{sendr}` is Admin Here...")
     except Exception as ex:
         return await xx.edit(f"`{ex}`")
