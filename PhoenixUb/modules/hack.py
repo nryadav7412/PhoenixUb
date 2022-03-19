@@ -6,6 +6,7 @@ import time
 import pytz
 from datetime import datetime
 from pytz import timezone
+from telegram import upload_file as uf
 
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".dc ?(.*)"))
 async def _(event):
@@ -44,6 +45,15 @@ async def _(event):
             await event.edit(f"`{data}`")
             os.remove(nm)
             
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".telegraph"))
+async def telegraph(event):
+    reply=await event.get_reply_message()
+    await event.edit("`Pasting to telegraph...`")
+    dl=await reply.download_media()
+    tt=uf(dl)
+    limk="https://telegra.ph" + tt[0]
+    await event.edit("`Uploaded To Telegraph` : `{limk}`")
+
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".when"))
 async def _(event):
     reply = await event.get_reply_message()
