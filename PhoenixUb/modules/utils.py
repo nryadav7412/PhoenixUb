@@ -3,8 +3,7 @@ from telethon import events, Button
 from telethon.utils import pack_bot_file_id
 import time 
 
-helper = '''
-`.purge`: reply to message to delete every message till the latest message 
+helper = '''`.prg`: reply to message to delete every message till the latest message 
 `.id`: reply to anything to get the respective ids 
 '''
 
