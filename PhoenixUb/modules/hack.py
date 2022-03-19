@@ -7,6 +7,7 @@ import pytz
 from datetime import datetime
 from pytz import timezone
 from telegraph import upload_file as uf
+from telethon.tl.functions.messages import AddChatUserRequest
 
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".dc ?(.*)"))
 async def _(event):
