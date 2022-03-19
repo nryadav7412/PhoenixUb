@@ -6,7 +6,7 @@ import os
 import sys
 import traceback
 
-@phoenixub.on(event.NewMessage(outgoing=True , pattern=".eval ?(.*)"))
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".eval ?(.*)"))
 async def eval(event):
   cmd = "".join(event.message.message.split(maxsplit=1)[1:])
   if not cmd:
