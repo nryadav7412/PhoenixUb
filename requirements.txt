@@ -11,3 +11,4 @@ jikanpy
 redis 
 Pillow
 pytz
+telegraph
