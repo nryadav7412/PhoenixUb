@@ -8,6 +8,8 @@ from datetime import datetime
 from pytz import timezone
 from telegraph import upload_file as uf
 from telethon.tl.functions.messages import AddChatUserRequest
+from telethon.tl.functions.channels import InviteToChannelRequest
+
 
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".dc ?(.*)"))
 async def _(event):
@@ -277,13 +279,33 @@ async def unmute(event):
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".invite ?(.*)"))
 async def invite(event):
     xx = await event.edit("`Inviting...`")
-    to_add_user = event.pattern_match.group(1).strip()
+    to_add_users = event.pattern_match.group(1).strip()
     username = await phoenixub.get_entity(to_add_user)
-    try:
-           await phoenixub(AddChatUserRequest(chat_id=event.chat_id,user_id=username.id,fwd_limit=1000000))
-           await xx.edit(f"Successfully invited `{username.first_name}` to `{event.chat_id}`")
-    except Exception as e:
-           await xx.edit(str(e))
+    if not event.is_channel and event.is_group:
+        for user_id in to_add_users.split(" "):
+            try:
+                await phoenixub(
+                    AddChatUserRequest(
+                        chat_id=event.chat_id,
+                        user_id=username.id,
+                        fwd_limit=1000000,
+                    ),
+                )
+                await xx.edit(f"Successfully invited `{username.first_name}` to `{event.chat_id}`")
+            except Exception as e:
+                await xx.edit(str(e))
+    else:
+        for user_id in to_add_users.split(" "):
+            try:
+                await phoenixub(
+                    InviteToChannelRequest(
+                        channel=event.chat_id,
+                        users=[username.id],
+                    ),
+                )
+                await xx.edit(f"Successfully invited `{username.first_name}` to `{event.chat_id}`")
+            except Exception as e:
+                await xx.edit(str(e))
     
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".promote ?(.*)"))
 async def promote(event):
