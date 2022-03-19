@@ -52,7 +52,7 @@ async def telegraph(event):
     dl=await reply.download_media()
     tt=uf(dl)
     limk="https://telegra.ph" + tt[0]
-    await event.edit("`Uploaded To Telegraph` : `{limk}`")
+    await event.edit(f"`Uploaded To Telegraph` : `{limk}`")
 
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".when"))
 async def _(event):
