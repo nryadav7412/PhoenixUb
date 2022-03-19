@@ -136,3 +136,30 @@ async def mkv(event):
  
 **❤️‍🔥@Pokemon_Episodess❤️‍🔥**'''))
     
+@phoenixub.on(events.NewMessage(outgoing=True , pattern=".promote ?(.*)"))
+async def promote(event):
+    xx = await event.edit("`Promoting...`")
+    cht=await phoenixub.get_chat()
+    rank = "Admin"
+    if event.reply:
+        a=await event.get_reply_message()
+        sendr=a.sender_id
+    else:
+        args=event.pattern_match.group(1)
+        
+    try:
+        await phoenixub.edit_admin(
+            ult.chat_id,
+            user.id,
+            invite_users=True,
+            ban_users=True,
+            delete_messages=True,
+            pin_messages=True,
+            manage_call=True,
+            title=rank,
+        )
+        await eod(
+            xx, get_string("pro_2").format(inline_mention(user), ult.chat.title, rank)
+        )
+    except Exception as ex:
+        return await xx.edit(f"`{ex}`")
