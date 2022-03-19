@@ -6,7 +6,7 @@ import time
 import pytz
 from datetime import datetime
 from pytz import timezone
-from telegram import upload_file as uf
+from telegraph import upload_file as uf
 
 @phoenixub.on(events.NewMessage(outgoing=True , pattern=".dc ?(.*)"))
 async def _(event):
