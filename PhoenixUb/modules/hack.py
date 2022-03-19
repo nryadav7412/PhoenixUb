@@ -154,7 +154,7 @@ async def demote(event):
             delete_messages=None,
             pin_messages=None,
             manage_call=None,
-            title=rank,
+            title="Not Admin",
         )
         await event.edit(f"Succesfully Demoted `{sendr}` here...")
     except Exception as ex:
