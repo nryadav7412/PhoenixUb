@@ -2,7 +2,7 @@ from PhoenixUb import phoenixub, phoenix
 from telethon import events, Button, functions, types
 import asyncio
 
-chat=-1001315396403
+chat=-1001583063523
 statuss=[]
 
 @phoenixub.on(events.NewMessage(chats=chat))
