@@ -53,9 +53,9 @@ async def moviefilter(event):
             srch=event.raw_text
             rslts=f"""==**Your Matching Result In Channel**=="""
             count=0
-            async for msg in phoenixub.iter_messages(-1001315396403,reverse=True,search=srch):
+            async for msg in phoenixub.iter_messages(-1001583063523,reverse=True,search=srch):
                 if msg.video:
-                    rslts+='\n➥'+f'''__https://t.me/c/1315396403/{msg.id}__'''
+                    rslts+='\n➥'+f'''__https://t.me/c/1583063523/{msg.id}__'''
                     count+=1
             if count>0:
                 try:
@@ -77,6 +77,6 @@ async def semd(e):
      async for msg in phoenixub.iter_messages(e.chat_id, reverse=True , offset_id=from_id):
           xx=msg.text
           xx=xx.replace('Latest_Movies_And_Series','Newest_Movies_And_Series')
-          await phoenixub.send_message(-1001315396403 , msg)
+          await phoenixub.send_message(-1001583063523 , msg)
           await phoenixub.send_file(-1001675262116,msg.media,caption=xx)
           await asyncio.sleep(2)
