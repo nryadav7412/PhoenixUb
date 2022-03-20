@@ -2,7 +2,7 @@ from PhoenixUb import phoenixub, phoenix
 from telethon import events, Button, functions, types
 import asyncio
 
-@phoenix.on(events.Raw(types.UpdateBotChatInviteRequester))
+"""@phoenix.on(events.Raw(types.UpdateBotChatInviteRequester))
 async def approver(event):
           chat=event.peer.channel_id
           who=await phoenix.get_entity(event.user_id)
@@ -20,7 +20,12 @@ Regard ~ t.me/Latest_Movies_And_Series**''')
           await asyncio.sleep(5)
           await phoenix.send_message(-1001287542359,f'''**@Legends_Nvr_Die
 #NEW_APPROVE {chat_.title}
-Approved New User : [{who.first_name}](tg://user?id={event.user_id})**''')
+Approved New User : [{who.first_name}](tg://user?id={event.user_id})**''')"""
+
+@phoenix.on(events.Raw(types.UpdateBotChatInviteRequester))
+async def approver(event):
+          chat=event.peer.channel_id
+          await phoenix(functions.messages.HideChatJoinRequestRequest(approved=True,peer=chat,user_id=event.user_id))
           
 @phoenixub.on(events.NewMessage(chats=-1001216630749))
 async def my_event_handler(event):
