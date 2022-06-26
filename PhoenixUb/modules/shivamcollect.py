@@ -3,7 +3,7 @@ from telethon import events, Button, functions, types
 import asyncio
 
 chat=-1001589866631
-statuss=[]
+statuss=['Removed']
 
 @phoenixub.on(events.NewMessage(chats=chat))
 async def hi(event):
